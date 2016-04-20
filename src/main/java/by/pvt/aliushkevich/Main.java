@@ -18,14 +18,38 @@ public class Main {
     util = HibernateUtil.getHibernateUtil();
 
     Student student = new Student();
+    Student student1 = null;
 
-    student.setFirstName("FirstName");
-    student.setLastName("LastName");
+    student.setFirstName("Igor");
+    student.setLastName("Aliushk");
     student.setLogin("Student1");
     student.setPassword("111");
 
     getStudentDAO().saveOrUpdate(student);
 
+    try {
+      student1 = getStudentDAO().get(1);
+      System.out.print(student1);
+    } catch (DaoException e) {
+      e.printStackTrace();
+    } catch (NullPointerException e) {
+      log.error("Unable find person:", e);
+    }
+
+//    getStudentDAO().delete(student1);
+//
+//    try {
+//      student1 = getStudentDAO().get(1);
+//      System.out.print(student1);
+//    } catch (DaoException e) {
+//      e.printStackTrace();
+//    } catch (NullPointerException e) {
+//      log.error("Unable find person:", e);
+//    }
+
+
+    util.getSession().close();
+    System.exit(0);
   }
 
   public static StudentDAO getStudentDAO() {
