@@ -20,33 +20,37 @@ public class Main {
   public static void main(String[] args) throws DaoException {
     util = HibernateUtil.getHibernateUtil();
 
-    Student student = new Student();
-    Student student1;
+    Student student1 = new Student();
+    student1.setFirstName("StudName1");
+    student1.setLastName("StudSurname1");
+    student1.setLogin("Student1");
+    student1.setPassword("111");
+    getStudentDAO().saveOrUpdate(student1);
 
-    student.setFirstName("Fedor");
-    student.setLastName("Pipkin");
-    student.setLogin("Student1");
-    student.setPassword("111");
-
-    getStudentDAO().saveOrUpdate(student);
+    Student student2 = new Student();
+    student2.setFirstName("StudName2");
+    student2.setLastName("StudSurname2");
+    student2.setLogin("Student2");
+    student2.setPassword("222");
+    getStudentDAO().saveOrUpdate(student2);
 
     try {
-      student1 = getStudentDAO().get(1);
-      System.out.print(student1);
+      System.out.print(getStudentDAO().get(1));
+      System.out.print(getStudentDAO().get(2));
     } catch (DaoException e) {
       e.printStackTrace();
     } catch (NullPointerException e) {
       log.error("Unable find person:", e);
     }
 
-    Lecturer lecturer = new Lecturer();
-
-    lecturer.setFirstName("Roman");
-    lecturer.setLastName("Pupkin");
-    lecturer.setLogin("Lecturer1");
-    lecturer.setPassword("111");
-
-    getLecturerDAO().saveOrUpdate(lecturer);
+    Lecturer lecturer1 = new Lecturer();
+    lecturer1.setFirstName("LectName1");
+    lecturer1.setLastName("LectSurname1");
+    lecturer1.setLogin("Lecturer1");
+    lecturer1.setPassword("111");
+    lecturer1.getStudents().add(student1);
+    lecturer1.getStudents().add(student2);
+    getLecturerDAO().saveOrUpdate(lecturer1);
 
 
 //    getStudentDAO().delete(student1);

@@ -2,18 +2,18 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
     "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="by.pvt.aliushkevich.pojos" auto-import="false" catalog="hibernate_test">
-  <class name="Student" table="Student">
-    <id name="id" type="int" column="id">
+  <class name="Student" table="students">
+    <id name="id" column="id" type="int">
       <generator class="native"/>
     </id>
 
-    <property name="firstName" column="firstName" type="string"/>
-    <property name="lastName" column="lastName" type="string"/>
+    <property name="firstName" column="first_name" type="string"/>
+    <property name="lastName" column="last_name" type="string"/>
     <property name="login" column="login" type="string"/>
     <property name="password" column="password" type="string"/>
 
 
-    <set name="lecturers" cascade="save-update" inverse="true" table="Lecturers_Students">
+    <set name="lecturers" cascade="save-update" inverse="true" table="lecturers_students">
       <key column="fk_student_id" not-null="true"/>
       <many-to-many class="Lecturer" column="fk_lecturer_id"/>
     </set>
