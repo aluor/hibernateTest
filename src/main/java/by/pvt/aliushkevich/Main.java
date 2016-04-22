@@ -24,6 +24,7 @@ public class Main {
     student.setLastName("Aliushk3");
     student.setLogin("Student3");
     student.setPassword("333");
+    student.setLearningCourseId(1);
 
     getStudentDAO().saveOrUpdate(student);
 

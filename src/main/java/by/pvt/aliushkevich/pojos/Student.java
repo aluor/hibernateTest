@@ -1,7 +1,5 @@
 package by.pvt.aliushkevich.pojos;
 
-//import by.pvt.aliushkevich.enums.Courses;
-
 //@Entity
 //@Table
 public class Student {
@@ -23,7 +21,7 @@ public class Student {
 //  @Column
   private String password;
 
-//private Courses learningCourse;
+  private int learningCourseId;
 
 //  @Column
   private int mark;
@@ -81,13 +79,13 @@ public class Student {
     this.password = password;
   }
 
-//  public Courses getLearningCourse() {
-//    return learningCourse;
-//  }
-//
-//  public void setLearningCourse(Courses learningCourse) {
-//    this.learningCourse = learningCourse;
-//  }
+  public int getLearningCourseId() {
+    return learningCourseId;
+  }
+
+  public void setLearningCourseId(int learningCourseId) {
+    this.learningCourseId = learningCourseId;
+  }
 
   public int getMark() {
     return mark;

@@ -13,6 +13,9 @@
     <property name="password" column="password" type="string"/>
     <property name="mark" column="mark" type="int"/>
     <property name="feedback" column="feedback" type="string"/>
+    <property name="learningCourseId" column="learningCourseId" type="int"/>
+
+
   </class>
 </hibernate-mapping>
 
