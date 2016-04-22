@@ -2,35 +2,33 @@ package by.pvt.aliushkevich.pojos;
 
 //import by.pvt.aliushkevich.enums.Courses;
 
-import javax.persistence.*;
-
-@Entity
-@Table
+//@Entity
+//@Table
 public class Student {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
-  @Column
+//  @Id
+//  @GeneratedValue(strategy = GenerationType.AUTO)
+//  @Column
   private int id;
 
-  @Column
+//  @Column
   private String firstName;
 
-  @Column
+//  @Column
   private String lastName;
 
-  @Column
+//  @Column
   private String login;
 
-  @Column
+//  @Column
   private String password;
 
 //private Courses learningCourse;
 
-  @Column
+//  @Column
   private int mark;
 
-  @Column
+//  @Column
   private String feedback;
 
   public Student() {

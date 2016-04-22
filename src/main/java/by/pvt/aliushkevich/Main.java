@@ -20,10 +20,10 @@ public class Main {
     Student student = new Student();
     Student student1 = null;
 
-    student.setFirstName("Igor");
-    student.setLastName("Aliushk");
-    student.setLogin("Student1");
-    student.setPassword("111");
+    student.setFirstName("Igor3");
+    student.setLastName("Aliushk3");
+    student.setLogin("Student3");
+    student.setPassword("333");
 
     getStudentDAO().saveOrUpdate(student);
 
