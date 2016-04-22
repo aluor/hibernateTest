@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
     "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="by.pvt.aliushkevich.pojos" auto-import="false" catalog="hibernate_test">
-  <class name="Student" table="Student">
+  <class name="Lecturer" table="Lecturer">
     <id name="id" type="int" column="id">
       <generator class="native"/>
     </id>
@@ -11,12 +11,14 @@
     <property name="lastName" column="lastName" type="string"/>
     <property name="login" column="login" type="string"/>
     <property name="password" column="password" type="string"/>
+    <property name="courseId" column="courseId" type="int"/>
 
-
-    <set name="lecturers" cascade="save-update" inverse="true" table="Lecturers_Students">
-      <key column="fk_student_id" not-null="true"/>
-      <many-to-many class="Lecturer" column="fk_lecturer_id"/>
+    <set name="students" cascade="save-update" table="Lecturers_Students">
+      <key column="fk_lecturer_id" not-null="true"/>
+      <many-to-many class="Student" column="fk_student_id"/>
     </set>
 
   </class>
 </hibernate-mapping>
+
+

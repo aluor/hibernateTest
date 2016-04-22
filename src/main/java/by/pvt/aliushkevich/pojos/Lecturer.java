@@ -1,30 +1,28 @@
 package by.pvt.aliushkevich.pojos;
 
 import java.io.Serializable;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
-public class Student implements Serializable {
+public class Lecturer implements Serializable {
   private static final long serialVersionUID = 1L;
   private int id;
   private String firstName;
   private String lastName;
   private String login;
   private String password;
-  private Set<Lecturer> lecturers = new HashSet<>();
-  private Map<Integer, Integer> marks = new HashMap<>();
-  private Map<Integer, String> feedbacks = new HashMap<>();
+  private int courseId;
+  private Set<Student> students = new HashSet<>();
 
-  public Student() {
+  public Lecturer() {
   }
 
-  public Student(String firstName, String lastName, String login, String password) {
+  public Lecturer(String firstName, String lastName, String login, String password, int courseId) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.login = login;
     this.password = password;
+    this.courseId = courseId;
   }
 
   public int getId() {
@@ -67,33 +65,34 @@ public class Student implements Serializable {
     this.password = password;
   }
 
-  public Set<Lecturer> getLecturers() {
-    return lecturers;
+  public int getCourseId() {
+    return courseId;
   }
 
-  public void setLecturers(Set<Lecturer> lecturers) {
-    this.lecturers = lecturers;
+  public void setCourseId(int courseId) {
+    this.courseId = courseId;
   }
 
-  public Map<Integer, Integer> getMarks() {
-    return marks;
+  public Set<Student> getStudents() {
+    return students;
   }
 
-  public void setMarks(Map<Integer, Integer> marks) {
-    this.marks = marks;
+  public void setStudents(Set<Student> students) {
+    this.students = students;
   }
 
-  public Map<Integer, String> getFeedbacks() {
-    return feedbacks;
-  }
 
-  public void setFeedbacks(Map<Integer, String> feedbacks) {
-    this.feedbacks = feedbacks;
-  }
+//  public void setMark(Student student, int mark) {
+//    student.setMark(mark);
+//  }
+//
+//  public void setFeedback(Student student, String feedback) {
+//    student.setFeedback(feedback);
+//  }
 
   @Override
   public String toString() {
-    return "Student ID " + id + ": " + firstName + " " + lastName + " (login: " + login + ")\n<br>"
-        + " marks: " + marks + "\n" + " feedbacks: " + feedbacks + "<br><br>";
+    return "Lecturer №" + id + ": " + firstName + " " + lastName + " (login: " + login + ")\n"
+        + "Teaches courses:" + courseId;
   }
 }

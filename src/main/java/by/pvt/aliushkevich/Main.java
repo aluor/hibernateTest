@@ -1,7 +1,9 @@
 package by.pvt.aliushkevich;
 
+import by.pvt.aliushkevich.dao.LecturerDAO;
 import by.pvt.aliushkevich.dao.StudentDAO;
 import by.pvt.aliushkevich.exceptions.DaoException;
+import by.pvt.aliushkevich.pojos.Lecturer;
 import by.pvt.aliushkevich.pojos.Student;
 import by.pvt.aliushkevich.util.HibernateUtil;
 import org.apache.log4j.Logger;
@@ -13,18 +15,18 @@ public class Main {
   private static Logger log = Logger.getLogger(Main.class);
   public static HibernateUtil util = null;
   private static StudentDAO studentDAO = null;
+  private static LecturerDAO lecturerDAO = null;
 
   public static void main(String[] args) throws DaoException {
     util = HibernateUtil.getHibernateUtil();
 
     Student student = new Student();
-    Student student1 = null;
+    Student student1;
 
-    student.setFirstName("Igor3");
-    student.setLastName("Aliushk3");
-    student.setLogin("Student3");
-    student.setPassword("333");
-    student.setLearningCourseId(1);
+    student.setFirstName("Fedor");
+    student.setLastName("Pipkin");
+    student.setLogin("Student1");
+    student.setPassword("111");
 
     getStudentDAO().saveOrUpdate(student);
 
@@ -36,6 +38,16 @@ public class Main {
     } catch (NullPointerException e) {
       log.error("Unable find person:", e);
     }
+
+    Lecturer lecturer = new Lecturer();
+
+    lecturer.setFirstName("Roman");
+    lecturer.setLastName("Pupkin");
+    lecturer.setLogin("Lecturer1");
+    lecturer.setPassword("111");
+
+    getLecturerDAO().saveOrUpdate(lecturer);
+
 
 //    getStudentDAO().delete(student1);
 //
@@ -60,4 +72,11 @@ public class Main {
     return studentDAO;
   }
 
+  public static LecturerDAO getLecturerDAO() {
+    if (lecturerDAO == null) {
+      lecturerDAO = new LecturerDAO();
+    }
+    return lecturerDAO;
+
+  }
 }

@@ -7,6 +7,4 @@ import by.pvt.aliushkevich.pojos.Student;
  */
 public class StudentDAO extends BaseDAO<Student>{
 
-
-
 }
