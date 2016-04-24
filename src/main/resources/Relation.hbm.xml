@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="by.pvt.aliushkevich.pojos" auto-import="false" catalog="hibernate_test">
+  <class name="by.pvt.aliushkevich.pojos.Relation" table="relations">
+    <id name="id" column="id" type="int">
+      <generator class="native"/>
+    </id>
+
+    <many-to-one name="lecturer" class="Lecturer" column="fk_lecturer_id"/>
+    <many-to-one name="student" class="Student" column="fk_student_id"/>
+    <property name="mark" column="mark" type="int"/>
+
+  </class>
+</hibernate-mapping>

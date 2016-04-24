@@ -4,6 +4,7 @@ import by.pvt.aliushkevich.dao.LecturerDAO;
 import by.pvt.aliushkevich.dao.StudentDAO;
 import by.pvt.aliushkevich.exceptions.DaoException;
 import by.pvt.aliushkevich.pojos.Lecturer;
+import by.pvt.aliushkevich.pojos.Relation;
 import by.pvt.aliushkevich.pojos.Student;
 import by.pvt.aliushkevich.util.HibernateUtil;
 import org.apache.log4j.Logger;
@@ -25,14 +26,12 @@ public class Main {
     student1.setLastName("StudSurname1");
     student1.setLogin("Student1");
     student1.setPassword("111");
-    getStudentDAO().saveOrUpdate(student1);
 
     Student student2 = new Student();
     student2.setFirstName("StudName2");
     student2.setLastName("StudSurname2");
     student2.setLogin("Student2");
     student2.setPassword("222");
-    getStudentDAO().saveOrUpdate(student2);
 
     try {
       System.out.print(getStudentDAO().get(1));
@@ -48,9 +47,21 @@ public class Main {
     lecturer1.setLastName("LectSurname1");
     lecturer1.setLogin("Lecturer1");
     lecturer1.setPassword("111");
-    lecturer1.getStudents().add(student1);
-    lecturer1.getStudents().add(student2);
+
+    Relation relation1 = new Relation();
+    relation1.setStudent(student1);
+    relation1.setLecturer(lecturer1);
+    lecturer1.getRelations().add(relation1);
+
+    Relation relation2 = new Relation();
+    relation2.setStudent(student2);
+    relation2.setLecturer(lecturer1);
+    lecturer1.getRelations().add(relation2);
+
+    getStudentDAO().saveOrUpdate(student1);
+    getStudentDAO().saveOrUpdate(student2);
     getLecturerDAO().saveOrUpdate(lecturer1);
+    //getStudentDAO().delete(student2);
 
 
 //    getStudentDAO().delete(student1);
@@ -66,6 +77,12 @@ public class Main {
 
 
     util.getSession().close();
+
+
+
+
+
+
     System.exit(0);
   }
 

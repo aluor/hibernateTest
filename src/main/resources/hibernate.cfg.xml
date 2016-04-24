@@ -14,8 +14,9 @@
     <!--
         <mapping class="by.pvt.aliushkevich.pojos.Student"/>
     -->
-    <mapping resource="Student.hbm.xml"/>
     <mapping resource="Lecturer.hbm.xml"/>
+    <mapping resource="Student.hbm.xml"/>
+    <mapping resource="Relation.hbm.xml"/>
 
   </session-factory>
 </hibernate-configuration>

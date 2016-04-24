@@ -13,9 +13,9 @@
     <property name="password" column="password" type="string"/>
     <property name="courseId" column="course_id" type="int"/>
 
-    <set name="students" cascade="save-update" table="lecturers_students">
+    <set name="relations" table="relations" cascade="all" inverse="true" >
       <key column="fk_lecturer_id" not-null="true"/>
-      <many-to-many class="Student" column="fk_student_id"/>
+      <one-to-many class="by.pvt.aliushkevich.pojos.Relation"/>
     </set>
 
   </class>

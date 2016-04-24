@@ -7,13 +7,13 @@ import java.util.Map;
 import java.util.Set;
 
 public class Student implements Serializable {
-  private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 3L;
   private int id;
   private String firstName;
   private String lastName;
   private String login;
   private String password;
-  private Set<Lecturer> lecturers = new HashSet<>();
+  private Set<Relation> relations = new HashSet<>();
   private Map<Integer, Integer> marks = new HashMap<>();
   private Map<Integer, String> feedbacks = new HashMap<>();
 
@@ -67,12 +67,12 @@ public class Student implements Serializable {
     this.password = password;
   }
 
-  public Set<Lecturer> getLecturers() {
-    return lecturers;
+  public Set<Relation> getRelations() {
+    return relations;
   }
 
-  public void setLecturers(Set<Lecturer> lecturers) {
-    this.lecturers = lecturers;
+  public void setRelations(Set<Relation> relations) {
+    this.relations = relations;
   }
 
   public Map<Integer, Integer> getMarks() {

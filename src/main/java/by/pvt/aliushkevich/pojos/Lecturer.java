@@ -12,7 +12,7 @@ public class Lecturer implements Serializable {
   private String login;
   private String password;
   private int courseId;
-  private Set<Student> students = new HashSet<>();
+  private Set<Relation> relations = new HashSet<>();
 
   public Lecturer() {
   }
@@ -73,12 +73,12 @@ public class Lecturer implements Serializable {
     this.courseId = courseId;
   }
 
-  public Set<Student> getStudents() {
-    return students;
+  public Set<Relation> getRelations() {
+    return relations;
   }
 
-  public void setStudents(Set<Student> students) {
-    this.students = students;
+  public void setRelations(Set<Relation> relations) {
+    this.relations = relations;
   }
 
 
