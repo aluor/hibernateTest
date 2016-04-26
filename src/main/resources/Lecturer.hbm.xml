@@ -13,8 +13,10 @@
     <property name="password" column="password" type="string"/>
     <property name="courseId" column="course_id" type="int"/>
 
-    <set name="relations" table="relations" cascade="all" inverse="true" >
-      <key column="fk_lecturer_id" not-null="true"/>
+    <!--<set name="relations" table="relations" cascade="all" inverse="false" >-->
+
+    <set name="relations" inverse="true" cascade="all-delete-orphan">
+      <key column="fk_lecturer_id"/>
       <one-to-many class="by.pvt.aliushkevich.pojos.Relation"/>
     </set>
 

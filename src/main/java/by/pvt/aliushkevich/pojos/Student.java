@@ -1,9 +1,7 @@
 package by.pvt.aliushkevich.pojos;
 
 import java.io.Serializable;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 public class Student implements Serializable {
@@ -14,8 +12,6 @@ public class Student implements Serializable {
   private String login;
   private String password;
   private Set<Relation> relations = new HashSet<>();
-  private Map<Integer, Integer> marks = new HashMap<>();
-  private Map<Integer, String> feedbacks = new HashMap<>();
 
   public Student() {
   }
@@ -75,25 +71,8 @@ public class Student implements Serializable {
     this.relations = relations;
   }
 
-  public Map<Integer, Integer> getMarks() {
-    return marks;
-  }
-
-  public void setMarks(Map<Integer, Integer> marks) {
-    this.marks = marks;
-  }
-
-  public Map<Integer, String> getFeedbacks() {
-    return feedbacks;
-  }
-
-  public void setFeedbacks(Map<Integer, String> feedbacks) {
-    this.feedbacks = feedbacks;
-  }
-
   @Override
   public String toString() {
-    return "Student ID " + id + ": " + firstName + " " + lastName + " (login: " + login + ")\n<br>"
-        + " marks: " + marks + "\n" + " feedbacks: " + feedbacks + "<br><br>";
+    return "Student ID " + id + ": " + firstName + " " + lastName + " (login: " + login + ")\n" + "relations: " +relations;
   }
 }

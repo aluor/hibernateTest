@@ -33,54 +33,69 @@ public class Main {
     student2.setLogin("Student2");
     student2.setPassword("222");
 
-    try {
-      System.out.print(getStudentDAO().get(1));
-      System.out.print(getStudentDAO().get(2));
-    } catch (DaoException e) {
-      e.printStackTrace();
-    } catch (NullPointerException e) {
-      log.error("Unable find person:", e);
-    }
-
     Lecturer lecturer1 = new Lecturer();
     lecturer1.setFirstName("LectName1");
     lecturer1.setLastName("LectSurname1");
     lecturer1.setLogin("Lecturer1");
     lecturer1.setPassword("111");
 
+    getStudentDAO().saveOrUpdate(student1);
+    getStudentDAO().saveOrUpdate(student2);
+
+
     Relation relation1 = new Relation();
     relation1.setStudent(student1);
     relation1.setLecturer(lecturer1);
+    relation1.setMark(2);
     lecturer1.getRelations().add(relation1);
 
     Relation relation2 = new Relation();
     relation2.setStudent(student2);
     relation2.setLecturer(lecturer1);
+    relation2.setMark(5);
     lecturer1.getRelations().add(relation2);
 
-    getStudentDAO().saveOrUpdate(student1);
-    getStudentDAO().saveOrUpdate(student2);
     getLecturerDAO().saveOrUpdate(lecturer1);
-    //getStudentDAO().delete(student2);
+lecturer1.getRelations().remove(relation1);
+
+    getLecturerDAO().saveOrUpdate(lecturer1);
+
+
+
+    try {
+      Student student02 = getStudentDAO().get(2);
+      System.out.println(student02);
+      Lecturer lecturer01 = getLecturerDAO().get(1);
+      System.out.println(lecturer01);
+    } catch (DaoException e) {
+      e.printStackTrace();
+    } catch (NullPointerException e) {
+      log.error("Unable find person:", e);
+    }
+
+
+//    Student student3 = new Student();
+//    student1.setFirstName("StudName3");
+//    student1.setLastName("StudSurname3");
+//    student1.setLogin("Student3");
+//    student1.setPassword("333");
+//    getStudentDAO().saveOrUpdate(student3);
 
 
 //    getStudentDAO().delete(student1);
-//
-//    try {
-//      student1 = getStudentDAO().get(1);
-//      System.out.print(student1);
-//    } catch (DaoException e) {
-//      e.printStackTrace();
-//    } catch (NullPointerException e) {
-//      log.error("Unable find person:", e);
-//    }
 
+    util.closeSession();
 
-    util.getSession().close();
-
-
-
-
+    try {
+      Student student02 = getStudentDAO().get(2);
+      System.out.println(student02);
+      Lecturer lecturer01 = getLecturerDAO().get(1);
+      System.out.println(lecturer01);
+    } catch (DaoException e) {
+      e.printStackTrace();
+    } catch (NullPointerException e) {
+      log.error("Unable find person:", e);
+    }
 
 
     System.exit(0);

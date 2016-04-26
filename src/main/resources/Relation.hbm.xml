@@ -9,7 +9,9 @@
 
     <many-to-one name="lecturer" class="Lecturer" column="fk_lecturer_id"/>
     <many-to-one name="student" class="Student" column="fk_student_id"/>
+
     <property name="mark" column="mark" type="int"/>
+    <property name="feedback" column="feedback" type="string"/>
 
   </class>
 </hibernate-mapping>

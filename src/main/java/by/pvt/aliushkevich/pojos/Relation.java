@@ -11,6 +11,7 @@ public class Relation implements Serializable {
   private Lecturer lecturer;
   private Student student;
   private int mark;
+  private String feedback;
 
   public Relation() {
   }
@@ -45,5 +46,24 @@ public class Relation implements Serializable {
 
   public void setMark(int mark) {
     this.mark = mark;
+  }
+
+  public String getFeedback() {
+    return feedback;
+  }
+
+  public void setFeedback(String feedback) {
+    this.feedback = feedback;
+  }
+
+  @Override
+  public String toString() {
+    return "Relation{" +
+        "id=" + id +
+        ", lecturerId=" + lecturer.getId() +
+        ", studentId=" + student.getId() +
+        ", mark=" + mark +
+        ", feedback='" + feedback + '\'' +
+        '}';
   }
 }

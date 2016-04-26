@@ -36,11 +36,15 @@ public class HibernateUtil {
     return session;
   }
 
+  public void closeSession() {
+    getSession().close();
+    sessions.set(null);
+  }
+
   public static synchronized HibernateUtil getHibernateUtil() {
     if (util == null) {
       util = new HibernateUtil();
     }
     return util;
   }
-
 }
