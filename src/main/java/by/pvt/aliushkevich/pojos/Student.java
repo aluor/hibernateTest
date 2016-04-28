@@ -1,9 +1,11 @@
 package by.pvt.aliushkevich.pojos;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+@Entity
 public class Student implements Serializable {
   private static final long serialVersionUID = 3L;
   private int id;
@@ -23,6 +25,8 @@ public class Student implements Serializable {
     this.password = password;
   }
 
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
   public int getId() {
     return id;
   }
@@ -31,6 +35,7 @@ public class Student implements Serializable {
     this.id = id;
   }
 
+  @Column
   public String getFirstName() {
     return firstName;
   }
@@ -39,6 +44,7 @@ public class Student implements Serializable {
     this.firstName = firstName;
   }
 
+  @Column
   public String getLastName() {
     return lastName;
   }
@@ -47,6 +53,7 @@ public class Student implements Serializable {
     this.lastName = lastName;
   }
 
+  @Column
   public String getLogin() {
     return login;
   }
@@ -55,6 +62,7 @@ public class Student implements Serializable {
     this.login = login;
   }
 
+  @Column
   public String getPassword() {
     return password;
   }
@@ -63,6 +71,7 @@ public class Student implements Serializable {
     this.password = password;
   }
 
+  @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval=true)
   public Set<Relation> getRelations() {
     return relations;
   }

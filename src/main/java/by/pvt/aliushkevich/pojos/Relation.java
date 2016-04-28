@@ -1,10 +1,9 @@
 package by.pvt.aliushkevich.pojos;
 
+import javax.persistence.*;
 import java.io.Serializable;
 
-/**
- * Created by Rabotnik on 23.04.2016.
- */
+@Entity
 public class Relation implements Serializable {
   private static final long serialVersionUID = 2L;
   private int id;
@@ -16,6 +15,8 @@ public class Relation implements Serializable {
   public Relation() {
   }
 
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
   public int getId() {
     return id;
   }
@@ -24,6 +25,8 @@ public class Relation implements Serializable {
     this.id = id;
   }
 
+  @ManyToOne
+  @JoinColumn (name = "fk_student_id")
   public Student getStudent() {
     return student;
   }
@@ -32,6 +35,8 @@ public class Relation implements Serializable {
     this.student = student;
   }
 
+  @ManyToOne
+  @JoinColumn (name = "fk_lecturer_id")
   public Lecturer getLecturer() {
     return lecturer;
   }
@@ -40,6 +45,7 @@ public class Relation implements Serializable {
     this.lecturer = lecturer;
   }
 
+  @Column
   public int getMark() {
     return mark;
   }
@@ -48,6 +54,7 @@ public class Relation implements Serializable {
     this.mark = mark;
   }
 
+  @Column
   public String getFeedback() {
     return feedback;
   }

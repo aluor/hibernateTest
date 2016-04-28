@@ -4,7 +4,7 @@
 <hibernate-configuration>
   <session-factory>
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hibernate_test</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">root</property>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
@@ -14,9 +14,9 @@
     <!--
         <mapping class="by.pvt.aliushkevich.pojos.Student"/>
     -->
-    <mapping resource="Lecturer.hbm.xml"/>
-    <mapping resource="Student.hbm.xml"/>
-    <mapping resource="Relation.hbm.xml"/>
+    <mapping class="by.pvt.aliushkevich.pojos.Lecturer"/>
+    <mapping class="by.pvt.aliushkevich.pojos.Student"/>
+    <mapping class="by.pvt.aliushkevich.pojos.Relation"/>
 
   </session-factory>
 </hibernate-configuration>

@@ -1,9 +1,11 @@
 package by.pvt.aliushkevich.pojos;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+@Entity
 public class Lecturer implements Serializable {
   private static final long serialVersionUID = 1L;
   private int id;
@@ -25,6 +27,8 @@ public class Lecturer implements Serializable {
     this.courseId = courseId;
   }
 
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
   public int getId() {
     return id;
   }
@@ -33,6 +37,7 @@ public class Lecturer implements Serializable {
     this.id = id;
   }
 
+  @Column
   public String getFirstName() {
     return firstName;
   }
@@ -41,6 +46,7 @@ public class Lecturer implements Serializable {
     this.firstName = firstName;
   }
 
+  @Column
   public String getLastName() {
     return lastName;
   }
@@ -49,6 +55,7 @@ public class Lecturer implements Serializable {
     this.lastName = lastName;
   }
 
+  @Column
   public String getLogin() {
     return login;
   }
@@ -57,6 +64,7 @@ public class Lecturer implements Serializable {
     this.login = login;
   }
 
+  @Column
   public String getPassword() {
     return password;
   }
@@ -65,6 +73,7 @@ public class Lecturer implements Serializable {
     this.password = password;
   }
 
+  @Column
   public int getCourseId() {
     return courseId;
   }
@@ -73,6 +82,7 @@ public class Lecturer implements Serializable {
     this.courseId = courseId;
   }
 
+  @OneToMany(mappedBy = "lecturer", cascade = CascadeType.ALL, orphanRemoval=true)
   public Set<Relation> getRelations() {
     return relations;
   }
@@ -93,6 +103,6 @@ public class Lecturer implements Serializable {
   @Override
   public String toString() {
     return "Lecturer №" + id + ": " + firstName + " " + lastName + " (login: " + login + ")\n"
-        + "Teaches courses:" + courseId + "relations: " +relations;
+        + "Teaches courses:" + courseId + "relations: " + relations;
   }
 }
